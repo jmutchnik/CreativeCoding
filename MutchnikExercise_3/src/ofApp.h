@@ -26,9 +26,10 @@ public:
     vector <ofPtr<ofxBox2dRect> > boxes;			  //	defalut box2d rects
     ofxBox2dParticleSystem particles;			      //    LiquidFun particle system
     
+    
     ofxPanel gui;
     
-    ofxIntSlider ParticleSize;
+    //ofxIntSlider ParticleSize;
     ofxIntSlider CircleSize;
     ofxIntSlider BoxSize;
     
