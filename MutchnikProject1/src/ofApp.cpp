@@ -10,14 +10,14 @@ void ofApp::setup(){
     
     
     
-    
+    // load tracks
     track1.load("01 untitled 07 l levitate.mp3");
     track2.load("02 Father Stretch My Hands, Pt. 1 (feat. Kid Cudi).mp3");
     track3.load("02 Drake - Pop Style (New Verse) (Radio Rip).mp3");
     
     
     
-    
+    // set FFT
     fftSmooth = new float [3000];
     for (int i = 0; i < 8192; i++) {
         fftSmooth[i] = 0;
@@ -31,6 +31,8 @@ void ofApp::setup(){
     
     angle =10;
     
+    
+    //color change bools
     colorchange1 = false;
     
     colorchange2 =  false;
@@ -44,6 +46,9 @@ void ofApp::update(){
     
     ofSoundUpdate();
     
+    
+    
+    //get amplitude
     
     float * value = ofSoundGetSpectrum(bands);
     for (int i = 0; i < bands; i++) {
@@ -61,6 +66,10 @@ void ofApp::update(){
 void ofApp::draw(){
     
     ofSetBackgroundAuto(true);
+    
+    
+    
+    //visuals
     
     for (int i=0; i<bands; i++) {
         
@@ -152,7 +161,7 @@ void ofApp::draw(){
                     for (int j=0; j<ofGetHeight(); j+=275) {
                         
               
-                        
+                        //change colors
                         
                         if (colorchange1) {
                             ofColor ecolor1 (160,32,ofRandom(200,240));
@@ -249,6 +258,8 @@ void ofApp::draw(){
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
     
+    
+    // play tracks with key press
     switch (key) {
         case '1':
             track1.play();

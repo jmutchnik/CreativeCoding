@@ -49,6 +49,16 @@ ofxGui:
 - sliders that control the size & color of the circles and boxes
 
 
+Exercise 5: Create a simple project which utilizes computer vision to do one or more of the following:
+
+-process an image or images
+-detection motion
+-track movement
+
+
+This is a simple sketch that uses ofxOpenCV to produce various filters of the images from the webcam.
+
+
 
 Project 1: Develop a project using generative art. 
 

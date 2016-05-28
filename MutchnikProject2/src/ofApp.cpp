@@ -7,6 +7,8 @@ void ofApp::setup(){
     ofSetVerticalSync(true);
     ofSetFrameRate(700);
    
+    
+    //use SoundFlower
     ofSoundStreamListDevices();
     //fft.fft.stream.setDeviceID(2);
     fft.setup();
@@ -28,6 +30,9 @@ void ofApp::setup(){
     
     angle =10;
 
+    
+    //bouncy balls
+    
     for (int i=0; i<75; i++) {
         balls[i].x = ofRandomWidth();
         balls[i].y = ofRandomHeight();
@@ -41,7 +46,7 @@ void ofApp::setup(){
     
     
     
-
+//setting the buttons
     
     circleButton.set(100, 450);
     radius = 55;
@@ -123,6 +128,8 @@ void ofApp::setup(){
 //--------------------------------------------------------------
 void ofApp::update(){
 
+    
+//setting the FFT
     ofSoundUpdate();
 
     fft.update();
@@ -143,7 +150,9 @@ void ofApp::update(){
 //        }
 //    }
     
+
     
+//bouncy balls velocity
     for (int i=0; i<75; i++) {
         
         balls[i].x = balls[i].x + balls[i].vx;
@@ -185,7 +194,11 @@ void ofApp::update(){
 //
 //    }
     
+
     
+    
+// load in Ableton Clips
+// set visualizations
     if (bTriangleButton){
         ofxAbletonLiveTrack *track = live.getTrack(3);
         track->printClips();
@@ -224,6 +237,9 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
     
+    
+    
+//star visual
     if(bStarVisual == true){
         
         ofPushMatrix();
@@ -283,6 +299,9 @@ void ofApp::draw(){
         ofPopMatrix();
     }
 
+    
+    
+// triangle visual
     if(bTriangleVisual == true){
         
         ofFill();
@@ -367,6 +386,9 @@ void ofApp::draw(){
         
         
     }
+    
+//diamond visual
+    
     if(bDiamondVisual == true){
         
         ofSetBackgroundAuto(true);
@@ -412,6 +434,8 @@ void ofApp::draw(){
         
         
     }
+    
+//rectangle visual
     
     if(bRectVisual == true){
         ofFill();
@@ -501,7 +525,7 @@ void ofApp::draw(){
         
     }
     
-
+// circle visual
 
     if(bCircleVisual == true){
         
@@ -779,12 +803,14 @@ ofDrawCircle(100, 450, 50);
 
 //--------------------------------------------------------------
 void ofApp::exit() {
+    // stop the clips when exited
     live.stop();
 }
 
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
+    
 
     if (key=='1')
     {
@@ -818,6 +844,8 @@ void ofApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
+    
+// if button is pressed, play track & visual
 
     if (circleButton.distance(ofPoint(x,y)) < radius) {
         bCircleButton = !bCircleButton;
